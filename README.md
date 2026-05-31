@@ -1,1 +1,1 @@
-This repository documents my Python learning journey as I strengthen my software engineering and AI engineering skills.
+This repository documents my ongoing journey in Python, software engineering, and AI engineering through hands-on projects and practical exercises.

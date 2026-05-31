@@ -1,1 +1,1 @@
-# python-learning
+This repository documents my Python learning journey as I strengthen my software engineering and AI engineering skills.

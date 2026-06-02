@@ -16,10 +16,9 @@ try:
     with open("Password.txt", "a") as f:
         f.write(password + "\n")
         
-    with open("Password.txt") as f:
+    with open("Password.txt", "r") as f:
         print(f.read())
         
-    f.close()
 except ValueError as e:
     print("Invalid parameter!")
 

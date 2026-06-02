@@ -16,7 +16,7 @@ try:
     with open("Password.txt", "a") as f:
         f.write(password + "\n")
         
-    with open("password.txt") as f:
+    with open("Password.txt") as f:
         print(f.read())
         
     f.close()

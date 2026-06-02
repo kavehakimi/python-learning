@@ -13,12 +13,13 @@ try:
     password = password_generator(password_length)
     print("Proposed password: ", password)
 
-    file = open("password.txt", "a")
-    file.write(password)
-    file.write("\n")
+    with open("Password.txt", "a") as f:
+        f.write(password + "\n")
+        
     with open("password.txt") as f:
         print(f.read())
-    file.close()
+        
+    f.close()
 except ValueError as e:
     print("Invalid parameter!")
 

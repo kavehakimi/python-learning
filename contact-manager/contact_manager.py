@@ -1,6 +1,12 @@
+import json
+from pathlib import Path
+
+JSON_PATH = Path(__file__).parent / "contacts.json"
+
 contacts = []
 
 def add_contact():
+    print("\n")
     name = input("Enter name: ")
     mobile = input("Enter mobile: ")
     email = input("Enter email: ")
@@ -25,7 +31,23 @@ def view_contacts():
         print("Mobile: ", contact["mobile"])
         print("Email: ", contact["email"])
 
+def add_to_json_file():
+    with open("contacts.json", "w", encoding="utf-8") as f:
+        json.dump(contacts, f)
+        print("Info added to Json file.")
+
+def read_json_file():
+    global contacts
+    try:
+        with open("contacts.json", encoding="utf-8") as f:
+            contacts = json.load(f)
+    except FileNotFoundError:
+        contacts = []
+
+read_json_file()
+
 while True:
+
     print("\n1. Add Contact")
     print("2. View Contacts")
     print("3. Exit")
@@ -34,12 +56,13 @@ while True:
 
     if option == "1":
         add_contact()
+        add_to_json_file()
     elif option == "2":
         view_contacts()
     elif option == "3":
         break
     else:
-        print("Invalid Otion!")
+        print("Invalid Option!")
 
 
 

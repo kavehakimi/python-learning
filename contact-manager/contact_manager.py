@@ -59,6 +59,18 @@ def search_contact():
     if not found:
         print("Contact not found!")
 
+def delete_contact():
+    delete_name = input("Enter name to delete: ")
+
+    for contact in contacts:
+        if contact["name"].lower() == delete_name.lower():
+            contacts.remove(contact)
+            add_to_json_file()
+            print("Contact deleted successfully.")
+            return
+    
+    print("Contact not found!")
+
 
 read_json_file()
 

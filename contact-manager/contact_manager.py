@@ -32,13 +32,13 @@ def view_contacts():
         print("Email: ", contact["email"])
 
 def add_to_json_file():
-    with open("contacts.json", "w", encoding="utf-8") as f:
+    with open(JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(contacts, f)
 
 def read_json_file():
     global contacts
     try:
-        with open("contacts.json", encoding="utf-8") as f:
+        with open(JSON_PATH, encoding="utf-8") as f:
             contacts = json.load(f)
     except FileNotFoundError:
         contacts = []
@@ -92,6 +92,8 @@ def update_contact():
                       
 
 read_json_file()
+
+##print(__file__)
 
 while True:
 

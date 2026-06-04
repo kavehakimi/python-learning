@@ -44,12 +44,12 @@ def read_json_file():
         contacts = []
 
 def search_contact():
-    search_name = input("Enter name to search: ")
+    name_to_search = input("Enter name to search: ")
 
     found = False
 
     for contact in contacts:
-        if contact["name"].lower() == search_name.lower():
+        if contact["name"].lower() == name_to_search.lower():
             print("----------")
             print("Name: ", contact["name"])
             print("Mobile: ", contact["mobile"])
@@ -60,10 +60,10 @@ def search_contact():
         print("Contact not found!")
 
 def delete_contact():
-    delete_name = input("Enter name to delete: ")
+    name_to_delete = input("Enter name to delete: ")
 
     for contact in contacts:
-        if contact["name"].lower() == delete_name.lower():
+        if contact["name"].lower() == name_to_delete.lower():
             contacts.remove(contact)
             add_to_json_file()
             print("Contact deleted successfully.")
@@ -71,6 +71,25 @@ def delete_contact():
     
     print("Contact not found!")
 
+def update_contact():
+    name_to_update = input("Enter name to update: ")
+
+    for contact in contacts:
+        if contact["name"].lower() == name_to_update.lower():
+            new_name = input("Enter new name: ")
+            new_mobile = input("Enter new mobile: ")
+            new_email = input("Enter new email: ")
+
+            contact["name"] = new_name
+            contact["mobile"] = new_mobile
+            contact["email"] = new_email
+
+            add_to_json_file()
+            print("Contact updated successfully!")
+            return
+
+    print("Contact not found!")
+                      
 
 read_json_file()
 
@@ -80,7 +99,8 @@ while True:
     print("2. View Contacts")
     print("3. Search Contact")
     print("4. Delete Contact")
-    print("5. Exit")
+    print("5. Update Contact")
+    print("6. Exit")
     
     option = input("Choose your option: ")
 
@@ -94,6 +114,8 @@ while True:
     elif option == "4":
         delete_contact()
     elif option == "5":
+        update_contact()
+    elif option == "6":
         break
     else:
         print("Invalid Option!")

@@ -34,7 +34,6 @@ def view_contacts():
 def add_to_json_file():
     with open("contacts.json", "w", encoding="utf-8") as f:
         json.dump(contacts, f)
-        print("Info added to Json file.")
 
 def read_json_file():
     global contacts
@@ -44,13 +43,32 @@ def read_json_file():
     except FileNotFoundError:
         contacts = []
 
+def search_contact():
+    search_name = input("Enter name to search: ")
+
+    found = False
+
+    for contact in contacts:
+        if contact["name"].lower() == search_name.lower():
+            print("----------")
+            print("Name: ", contact["name"])
+            print("Mobile: ", contact["mobile"])
+            print("Email: ", contact["email"])
+            found = True
+    
+    if not found:
+        print("Contact not found!")
+
+
 read_json_file()
 
 while True:
 
     print("\n1. Add Contact")
     print("2. View Contacts")
-    print("3. Exit")
+    print("3. Search Contact")
+    print("4. Delete Contact")
+    print("5. Exit")
     
     option = input("Choose your option: ")
 
@@ -60,6 +78,10 @@ while True:
     elif option == "2":
         view_contacts()
     elif option == "3":
+        search_contact()
+    elif option == "4":
+        delete_contact()
+    elif option == "5":
         break
     else:
         print("Invalid Option!")
